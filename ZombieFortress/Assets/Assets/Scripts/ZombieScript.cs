@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ZombieScript : MonoBehaviour
 {
-    public float moveSpeed = 0.0f;
+    public float moveSpeed = 0.5f;
     public float health = 15f;
     public GameObject nextNode;
+    public int damage = 1;
+    GameObject goal;
 
 
     void Create()
@@ -24,6 +26,11 @@ public class ZombieScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if(nextNode != null) {
             float step = moveSpeed * Time.deltaTime;
             step = step / 7;
@@ -35,5 +42,22 @@ public class ZombieScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Finish")
+        {
+            Debug.Log("Collission");
+            goal = other.gameObject;
+            StartCoroutine("DealGateDamage");
+        }
+    }
+
+    IEnumerator DealGateDamage()
+    {
+        goal.GetComponent<GateScript>().health -= damage;
+        yield return new WaitForSeconds(1f);   //Wait
+        StartCoroutine("DealGateDamage");
     }
 }

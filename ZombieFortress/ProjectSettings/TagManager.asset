@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WalkNode
   - Enemy
+  - Spawner
   layers:
   - Default
   - TransparentFX

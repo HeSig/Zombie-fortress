@@ -8,11 +8,12 @@ public class ZombieSpawner : MonoBehaviour
     public GameObject firstNode;
     public GameObject normalZombieObject;
     public int numberOfZombies;
+    public bool allSpawned = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnZombies(5);
+        //SpawnZombies(20);
     }
 
     // Update is called once per frame
@@ -21,15 +22,18 @@ public class ZombieSpawner : MonoBehaviour
         
     }
 
-    void SpawnZombies(int i)
+    //Function to start spawning zombies.
+    public void SpawnZombies(int i)
     {
+        Debug.Log("Spawning " + i + " zombies.");
+        allSpawned = false;
         numberOfZombies = i;
         StartCoroutine("Spawn");
     }
 
     IEnumerator Spawn()
     {
-        if(numberOfZombies > 0) { 
+        if(numberOfZombies > 0) {
             ZombieScript script;
             GameObject zombie = Instantiate(normalZombieObject, transform.position, Quaternion.identity);
             script = zombie.GetComponent<ZombieScript>();
@@ -38,6 +42,10 @@ public class ZombieSpawner : MonoBehaviour
             yield return new WaitForSeconds(1.0f);   //Wait
             numberOfZombies--;
             StartCoroutine("Spawn");
+        }
+        else
+        {
+            allSpawned = true;
         }
     }
 
