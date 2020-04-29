@@ -20,12 +20,11 @@ public class GunTowerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
+        
         if (zombies.Count > 0)
         {
 
-            if (zombies[0] == null)
+            if (zombies[0] == null || zombies[0].GetComponent<ZombieScript>().dead)
             {
                 zombies.RemoveAt(0);
             }

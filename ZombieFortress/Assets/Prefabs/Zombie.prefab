@@ -113,6 +113,7 @@ MonoBehaviour:
   health: 15
   nextNode: {fileID: 0}
   damage: 1
+  rotationSpeed: 0
 --- !u!54 &9090153490683663324
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -142,19 +143,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: f2a03eaf53eec964aa81784732592d2e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.39555973
+      value: 0.39555967
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: f2a03eaf53eec964aa81784732592d2e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.44423056
+      value: -0.4442305
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: f2a03eaf53eec964aa81784732592d2e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.56947243
+      value: -0.5694724
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: f2a03eaf53eec964aa81784732592d2e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.56735617
+      value: 0.5673561
       objectReference: {fileID: 0}
     - target: {fileID: 400100, guid: f2a03eaf53eec964aa81784732592d2e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -215,7 +216,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: f2a03eaf53eec964aa81784732592d2e, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: a8775c690ed522f47b8036a52b43df9b, type: 2}
+      objectReference: {fileID: 9100000, guid: b1836197819faba4fbe20494ecd2239c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2a03eaf53eec964aa81784732592d2e, type: 3}
 --- !u!4 &1074340356108837067 stripped
