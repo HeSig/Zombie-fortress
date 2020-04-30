@@ -12,10 +12,14 @@ public class GameControllerScript : MonoBehaviour
     int currentLevel = 0; //Counter for the current level
     bool[] levelsCleared = { false, false, false, false, false, false }; //Array of boolean values that show if a level has been completed or not (Can be removed at some point)
     bool levelRunning;
+    public int score;
+    TextMesh scoreText;
+    TextMesh loseText;
 
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
         gate = GameObject.FindGameObjectsWithTag("Finish")[0];
         gameCamera = GameObject.FindGameObjectsWithTag("MainCamera")[0];
 
@@ -23,7 +27,9 @@ public class GameControllerScript : MonoBehaviour
 
         zombieCount = levels[currentLevel];
         levelRunning = false;
-        gameCamera.gameObject.transform.Find("LoseText").GetComponent<TextMesh>().text = "Press space to start next level";
+        loseText = gameCamera.gameObject.transform.Find("LoseText").GetComponent<TextMesh>();
+        scoreText = gameCamera.gameObject.transform.Find("ScoreText").GetComponent<TextMesh>();
+        loseText.text = "Press space to start next level";
 
 
         //Start first level
@@ -44,17 +50,18 @@ public class GameControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scoreText.text = "Score: " + score;
         if (zombieCount == 0 && levelRunning)
         {
             levelsCleared[currentLevel] = true;
             levelRunning = false;
-            gameCamera.gameObject.transform.Find("LoseText").GetComponent<TextMesh>().text = "Press space to start next level";
+            loseText.text = "Press space to start next level";
         }
 
         //If the gate is destroyed the player loses
         if (gate == null)
         {
-            gameCamera.gameObject.transform.Find("LoseText").GetComponent<TextMesh>().text = "YOU LOSE";
+            loseText.text = "YOU LOSE";
         }
 
         //Checks if there are any zombies left, and if the zombieSpawner has spawned all of its zombies.
@@ -75,7 +82,7 @@ public class GameControllerScript : MonoBehaviour
                         zombieSpawner.GetComponent<ZombieSpawner>().SpawnZombies(levels[currentLevel]);
 
                         //Update UI-text to the new level.
-                        gameCamera.gameObject.transform.Find("LoseText").GetComponent<TextMesh>().text = "Level " + (currentLevel + 1);
+                        loseText.text = "Level " + (currentLevel + 1);
                         break;
                     }
                 }

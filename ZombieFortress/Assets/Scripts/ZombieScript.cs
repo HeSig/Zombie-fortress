@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ZombieScript : MonoBehaviour
 {
-    public float moveSpeed = 0.5f;
-    public float health = 15f;
+    public float moveSpeed = 1f;
+    public float health = 100f;
     public GameObject nextNode;
     public int damage = 1;
     GameObject goal;
@@ -16,21 +17,29 @@ public class ZombieScript : MonoBehaviour
     private Vector3 _direction;
     public bool dead = false;
     Animator animator;
+    int scoreValue = 10;
+
+    [Header("Unity stuff")]
+    public Image healthBar;
+    public Canvas healthCanvas;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreValue = 10;
         animator = GetComponentInChildren<Animator>();
         mainControllerScript = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameControllerScript>();
         rotationSpeed = 2f;
+        healthBar.fillAmount = health / 100f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        healthBar.fillAmount = health / 100f;
 
-
-        if(nextNode != null && !dead) {
+        if (nextNode != null && !dead) {
             float step = moveSpeed * Time.deltaTime;
 
             _direction = (new Vector3(nextNode.transform.position.x, transform.position.y, nextNode.transform.position.z) - transform.position).normalized;
@@ -61,11 +70,13 @@ public class ZombieScript : MonoBehaviour
         if (other.gameObject.name == "Bullet_Prefab")
         {
             Debug.Log("HIT");
-            health -= 1;
-        }
+                //health -= 1;
+                
+            }
         if (health <= 0)
         {
             mainControllerScript.zombieCount -= 1;
+                mainControllerScript.score += scoreValue;
             animator.SetBool("Dead", true);
                 GetComponent<Rigidbody>().freezeRotation = true;
                 GetComponent<Rigidbody>().Sleep();
@@ -77,6 +88,7 @@ public class ZombieScript : MonoBehaviour
 
     IEnumerator Die()
     {
+        healthCanvas.enabled = false;
         yield return new WaitForSeconds(3f);   //Wait
         Destroy(gameObject);
     }

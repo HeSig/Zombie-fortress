@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerBulletScript : MonoBehaviour
 {
-    int damage = 2;
+    int damage = 10;
     public Vector3 direction;
 
     // Start is called before the first frame update
