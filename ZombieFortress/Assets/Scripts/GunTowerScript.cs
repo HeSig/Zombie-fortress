@@ -11,21 +11,24 @@ public class GunTowerScript : MonoBehaviour
     bool ready = true;
     // Start is called before the first frame update
     int bulletSpeed = 20;
+    RotationScript rotationScript;
+
+
     void Start()
     {
         zombies = new List<GameObject>();
         towerBall = gameObject.transform.Find("Ball").gameObject;
+        rotationScript = GetComponentInChildren<RotationScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
+        
         if (zombies.Count > 0)
         {
 
-            if (zombies[0] == null)
+            if (zombies[0] == null || zombies[0].GetComponent<ZombieScript>().dead)
             {
                 zombies.RemoveAt(0);
             }
@@ -41,6 +44,7 @@ public class GunTowerScript : MonoBehaviour
                 {
                     GameObject bullet = Instantiate(bulletObject, towerBall.transform.position, Quaternion.identity);
                     bullet.GetComponent<Rigidbody>().velocity = towerBall.transform.forward * bulletSpeed;
+                    rotationScript.fire();
                     ready = false;
                     StartCoroutine("Reload");
                 }
