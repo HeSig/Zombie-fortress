@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TowerBulletScript : MonoBehaviour
 {
-    int damage = 10;
+    public int damage = 10;
     public Vector3 direction;
+    bool active = true;
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +31,12 @@ public class TowerBulletScript : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Enemy" && active && !col.GetComponent<ZombieScript>().dead)
         {
             col.gameObject.GetComponent<ZombieScript>().health -= damage;
-
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             gameObject.GetComponent<TrailRenderer>().emitting = false;
+            active = false;
         }
     }
 

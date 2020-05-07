@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * 
+ * Script for the standard tower prefab.
+ * 
+ * 
+ **/
 public class GunTowerScript : MonoBehaviour
 {
     List<GameObject> zombies;
@@ -9,9 +15,11 @@ public class GunTowerScript : MonoBehaviour
     GameObject towerBall;
     float strength = 1005.5f;
     bool ready = true;
-    // Start is called before the first frame update
     int bulletSpeed = 20;
+    int bulletDamage = 10;
     RotationScript rotationScript;
+    int level = 1;
+    AudioSource audioSource;
 
 
     void Start()
@@ -42,9 +50,7 @@ public class GunTowerScript : MonoBehaviour
 
                 if (ready == true)
                 {
-                    GameObject bullet = Instantiate(bulletObject, towerBall.transform.position, Quaternion.identity);
-                    bullet.GetComponent<Rigidbody>().velocity = towerBall.transform.forward * bulletSpeed;
-                    rotationScript.fire();
+                    fireBullet(bulletDamage * level);
                     ready = false;
                     StartCoroutine("Reload");
                 }
@@ -57,6 +63,14 @@ public class GunTowerScript : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);   //Wait
         ready = true;
+    }
+
+    void fireBullet(int damage)
+    {
+        GameObject bullet = Instantiate(bulletObject, towerBall.transform.position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody>().velocity = towerBall.transform.forward * bulletSpeed;
+        bullet.GetComponent<TowerBulletScript>().damage = damage;
+        rotationScript.fire();
     }
 
     void OnTriggerEnter(Collider other)
