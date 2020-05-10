@@ -1241,7 +1241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040484720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.14549, y: 2.1937137, z: 2.0500555}
+  m_LocalPosition: {x: 18.08, y: 2.1937137, z: 3.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1203379024}
@@ -2301,6 +2301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstNode: {fileID: 8853299754336498562}
   normalZombieObject: {fileID: 1868370297691056424, guid: 4eb569a63b87cc6459e39588a40c6e0e,
+    type: 3}
+  BigZombieObject: {fileID: 1868370297691056424, guid: 542fa8fe15c92e64293f9095bb43bb0b,
     type: 3}
   numberOfZombies: 0
 --- !u!1001 &8853299754336498561
