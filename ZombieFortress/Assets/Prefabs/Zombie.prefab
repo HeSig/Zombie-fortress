@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 1868370297691056431}
   - component: {fileID: 9183177306886481981}
   - component: {fileID: 9090153490683663324}
+  - component: {fileID: 7281292453597045791}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -145,6 +146,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &7281292453597045791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868370297691056424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd32fbca34d2bce4683730a076f9e384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  is_Player: 0
+  is_Boar: 0
+  is_Cannibal: 1
 --- !u!1001 &1074340356108974639
 PrefabInstance:
   m_ObjectHideFlags: 0
