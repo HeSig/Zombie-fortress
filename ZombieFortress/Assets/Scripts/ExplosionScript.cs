@@ -6,7 +6,7 @@ public class ExplosionScript : MonoBehaviour
 {
 
     float maxExplosionRadius = 5f;
-    float explosionSpeed = 0.1f;
+    float explosionSpeed = 0.5f;
     Vector3 scaleChange;
     public int damage = 10;
     // Start is called before the first frame update

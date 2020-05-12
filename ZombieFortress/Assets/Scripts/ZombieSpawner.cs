@@ -7,12 +7,17 @@ public class ZombieSpawner : MonoBehaviour
 
     public GameObject firstNode;
     public GameObject normalZombieObject;
+    public GameObject BigZombieObject;
+    GameObject ZombieToSpawn;
     public int numberOfZombies;
+    GameObject zombie;
 
     // Start is called before the first frame update
     void Start()
     {
         //SpawnZombies(20);
+        zombie = null;
+        ZombieToSpawn = null;
     }
 
     // Update is called once per frame
@@ -33,7 +38,15 @@ public class ZombieSpawner : MonoBehaviour
     {
         if(numberOfZombies > 0) {
             ZombieScript script;
-            GameObject zombie = Instantiate(normalZombieObject, transform.position, Quaternion.identity);
+
+            ZombieToSpawn = normalZombieObject;
+            int num = Random.Range(0, 2);
+            if(num == 1)
+            {
+                ZombieToSpawn = BigZombieObject;
+            }
+
+            zombie = Instantiate(ZombieToSpawn, transform.position, Quaternion.identity);
             script = zombie.GetComponent<ZombieScript>();
             script.nextNode = firstNode;
 
