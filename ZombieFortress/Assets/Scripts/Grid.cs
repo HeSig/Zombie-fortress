@@ -20,10 +20,11 @@ public class Grid : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        for(float x=200; x < 500; x += size) {
-            for(float z=200; z < 500; z += size) {
-                var point = GetNearestPointOnGrid(new Vector3(x, 0f, z));
-                Gizmos.DrawSphere(point, 0.1f);
+        for(float x=50; x < 400; x += size) {      // x < 400
+            for(float z=50; z < 400; z += size) {   // z < 400
+                var point = GetNearestPointOnGrid(new Vector3(x, 20f, z));
+                Gizmos.DrawSphere(point, 0.2f);
+                //Gizmos.DrawCube(point, 0.2f);
             }
         }    
     }
