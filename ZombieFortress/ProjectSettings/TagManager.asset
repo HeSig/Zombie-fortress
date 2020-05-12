@@ -7,6 +7,7 @@ TagManager:
   - WalkNode
   - Enemy
   - Spawner
+  - UI
   layers:
   - Default
   - TransparentFX
