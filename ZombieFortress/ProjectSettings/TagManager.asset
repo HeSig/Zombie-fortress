@@ -7,6 +7,9 @@ TagManager:
   - WalkNode
   - Enemy
   - Spawner
+  - FP Camera
+  - Look Root
+  - Crosshair
   layers:
   - Default
   - TransparentFX
@@ -16,9 +19,9 @@ TagManager:
   - UI
   - 
   - 
+  - Player
   - 
-  - 
-  - 
+  - FirstPerson
   - 
   - 
   - 
