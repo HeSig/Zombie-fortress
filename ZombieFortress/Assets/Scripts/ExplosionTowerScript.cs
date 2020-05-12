@@ -69,7 +69,7 @@ public class ExplosionTowerScript : MonoBehaviour
     IEnumerator Reload()
     {
 
-        yield return new WaitForSeconds(0.5f);   //Wait
+        yield return new WaitForSeconds(2f);   //Wait
         ready = true;
     }
 
@@ -77,7 +77,7 @@ public class ExplosionTowerScript : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletObject, towerBall.transform.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody>().velocity = towerBall.transform.forward * bulletSpeed;
-        bullet.GetComponent<TowerBulletScript>().damage = damage;
+        bullet.GetComponent<BombBulletScript>().damage = damage;
         rotationScript.fire();
     }
 
