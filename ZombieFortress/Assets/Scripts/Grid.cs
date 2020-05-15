@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour {
     [SerializeField] private float size = 5f;
-    public float Size { get { return size; }}
+    //public float Size { get { return size; }}
 
     public Vector3 GetNearestPointOnGrid(Vector3 position){
 
@@ -20,12 +20,12 @@ public class Grid : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        for(float x=0; x < 40; x += size) {
-            for(float z=0; z < 40; z += size) {
-                var point = GetNearestPointOnGrid(new Vector3(x, 0f, z));
-                Gizmos.DrawSphere(point, 0.1f);
+        for(float x=50; x < 400; x += size) {      // x < 400
+            for(float z=50; z < 400; z += size) {   // z < 400
+                var point = GetNearestPointOnGrid(new Vector3(x, 20f, z));
+                Gizmos.DrawSphere(point, 0.2f);
+                //Gizmos.DrawCube(point, 0.2f);
             }
         }    
     }
-   
 }
