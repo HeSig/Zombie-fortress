@@ -129,6 +129,8 @@ MonoBehaviour:
   dead: 0
   healthBar: {fileID: 129815924811793027}
   healthCanvas: {fileID: 5254772189224582018}
+  coin: {fileID: 2181874340003642561, guid: 2709588849ce9d3418d6e2411f9bc6d6, type: 3}
+  coinDrop: 2
 --- !u!54 &9090153490683663324
 Rigidbody:
   m_ObjectHideFlags: 0
