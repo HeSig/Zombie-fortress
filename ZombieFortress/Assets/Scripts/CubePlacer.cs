@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using UnityEngine;
 
 public class CubePlacer : MonoBehaviour {
     private Grid grid;
+    public GameObject prefabGrid;
+
+
+    void Start() {
+        Instantiate(prefabGrid, transform.position, transform.rotation);
+    }
 
     private void Awake(){
         grid = FindObjectOfType<Grid>();
@@ -19,12 +26,14 @@ public class CubePlacer : MonoBehaviour {
     }
     private void PlaceCubeNear(Vector3 clickPoint){
         var finalPosition = grid.GetNearestPointOnGrid(clickPoint);
-        GameObject.CreatePrimitive(PrimitiveType.Cube).transform.position = finalPosition;
-        //GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.position = nearPoint;
-        
+
+        //GameObject.CreatePrimitive(PrimitiveType.Cube).transform.position = finalPosition;
+        Instantiate(prefabGrid, finalPosition, transform.rotation);
 
     }
 
 
-   
+
+
+
 }
