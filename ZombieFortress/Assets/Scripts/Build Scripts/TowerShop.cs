@@ -5,6 +5,9 @@ using UnityEngine;
 public class TowerShop : MonoBehaviour
 {
 
+    public TowerBlueprint gunTower;
+    public TowerBlueprint explosionTower;
+
     BuildManager buildManager;
 
     void Start() { buildManager = BuildManager.instance; }
@@ -12,11 +15,11 @@ public class TowerShop : MonoBehaviour
     void Update() {
 
          if(Input.GetKeyDown(KeyCode.Alpha1)) {
-            buildManager.BuildTower(buildManager.standardTowerPrefab);
+            buildManager.setTowerToBuild(gunTower);
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha2)) {
-            
+            buildManager.setTowerToBuild(explosionTower);
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha3)) {
@@ -36,4 +39,6 @@ public class TowerShop : MonoBehaviour
         }
 
     }
+
+    
 }

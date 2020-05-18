@@ -22,4 +22,5 @@ public class Tags {
     public const string CROSSHAIR = "Crosshair";
     public const string PLAYER_TAG = "Player";
     public const string ENEMY_TAG = "Enemy";
+    public const string SHOP = "Tower Shop";
 }

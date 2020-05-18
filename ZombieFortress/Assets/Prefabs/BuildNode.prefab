@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4619382969042224408}
   - component: {fileID: 1211961926137909476}
   m_Layer: 0
-  m_Name: GridDummy
+  m_Name: BuildNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   hoverColor: {r: 0.4289338, g: 0.4298685, b: 0.764151, a: 0}
   positionOffset: {x: 0, y: 4.34, z: 0}
   towerShop: {fileID: 0}
-  hasTower: 0
+  tower: {fileID: 0}
 --- !u!114 &4619382969042224408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,8 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2261027cf31c6e46b61b52d4337c99f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardTowerPrefab: {fileID: 5354403422131042855, guid: 0d6a47b93bb9ae94ab2f6f4abc54e5a2,
-    type: 3}
 --- !u!65 &1211961926137909476
 BoxCollider:
   m_ObjectHideFlags: 0

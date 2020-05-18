@@ -10,6 +10,7 @@ TagManager:
   - FP Camera
   - Look Root
   - Crosshair
+  - Tower Shop
   layers:
   - Default
   - TransparentFX

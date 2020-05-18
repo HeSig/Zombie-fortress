@@ -12,21 +12,32 @@ public class BuildManager : MonoBehaviour {
         instance = this;
         
     }
-    
-    public GameObject standardTowerPrefab;
-    // Add more tower prefabs as needed 
 
-    private Transform buildPosition; 
-    private Vector3 buildOffset;
+    private TowerBlueprint towerToBuild;
+    private BuildNode currentNode;
+
  
+    public void BuildTower()  {
 
-    public void BuildTower(GameObject tower) {
-        Instantiate(tower, buildPosition.position + buildOffset, buildPosition.rotation);
-        SendMessage("TowerBuilt");
+        GameObject tower = (GameObject)Instantiate(towerToBuild.prefab, currentNode.GetBuildPosition(), Quaternion.identity);
+        currentNode.tower = tower;
+        currentNode.towerShop.SetActive(false);
+
+    } 
+
+    public void SetCurrentNode(BuildNode node) {
+        currentNode = node;
     }
 
-    public void SetBuildPosition(Transform pos, Vector3 offset) {
-        buildPosition = pos;
-        buildOffset = offset;
+    public void setTowerToBuild(TowerBlueprint tower) {
+
+        towerToBuild = tower;
+        
+        if (towerToBuild == null)
+            return;
+        
+        BuildTower();
+
     }
+
 }
