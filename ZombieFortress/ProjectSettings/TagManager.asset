@@ -4,43 +4,47 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - WalkNode
-  - Enemy
-  - Spawner
+  - Crosshair
+  - Tower Shop
   - UI
+  - WalkNode
+  - Look Root
+  - FP Camera
+  - Enemy
+  - Coin
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  -
+  - 
   - Water
   - UI
-  -
-  -
-  - Player
   - 
-  - FirstPerson
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0

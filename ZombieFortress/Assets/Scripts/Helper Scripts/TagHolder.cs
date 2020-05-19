@@ -18,8 +18,9 @@ public class AnimationTags {
 
 public class Tags {
     public const string LOOK_ROOT = "Look Root";
-    public const string ZOOM_CAMERA = "FP Camera";
     public const string CROSSHAIR = "Crosshair";
     public const string PLAYER_TAG = "Player";
     public const string ENEMY_TAG = "Enemy";
+    public const string SHOP_TAG = "Tower Shop";
+    public const string COIN_TAG = "Coin"; 
 }

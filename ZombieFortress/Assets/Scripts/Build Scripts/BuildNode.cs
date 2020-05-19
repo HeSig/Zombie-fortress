@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerPlacementScript : MonoBehaviour {
+public class BuildNode : MonoBehaviour {
 
     public Color hoverColor;
     public Vector3 positionOffset;
     public GameObject towerShop;
+
+    [Header("Optional")]
+    public GameObject tower;
 
     private Renderer rend;
     private Color startColor;
 
     private BuildManager buildManager;
     private GameObject crosshair;
-    public bool hasTower;
 
     void Start() {
 
@@ -22,21 +24,23 @@ public class TowerPlacementScript : MonoBehaviour {
 
         buildManager = BuildManager.instance;
         crosshair = GameObject.FindWithTag(Tags.CROSSHAIR);
-        hasTower = false;
 
     }
 
-    void OnTriggerEnter(Collider other) {
+    public Vector3 GetBuildPosition() {
+        return transform.position + positionOffset;
+    }
 
+    void OnTriggerEnter(Collider other) {
+    
         if(other.gameObject == GameObject.FindWithTag(Tags.PLAYER_TAG)) {
 
-            if(hasTower) {
-
+            if(tower != null)
                  return;
 
-            } else {
+            else {
 
-                buildManager.SetBuildPosition(transform, positionOffset);
+                buildManager.SetCurrentNode(this);
         
                 towerShop.SetActive(true);
                 crosshair.SetActive(false);
@@ -52,15 +56,8 @@ public class TowerPlacementScript : MonoBehaviour {
 
     }
 
-
     void OnMouseEnter() { rend.material.color = hoverColor; }
 
     void OnMouseExit() { rend.material.color = startColor; }
 
-    void TowerBuilt() { 
-
-        towerShop.SetActive(false);
-        hasTower = true;
-        
-    }
 }

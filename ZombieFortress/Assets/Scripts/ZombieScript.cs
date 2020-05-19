@@ -23,6 +23,8 @@ public class ZombieScript : MonoBehaviour
     [Header("Unity stuff")]
     public Image healthBar;
     public Canvas healthCanvas;
+    public GameObject coin;
+    public int coinDrop;
 
 
     // Start is called before the first frame update
@@ -94,6 +96,11 @@ public class ZombieScript : MonoBehaviour
 
     IEnumerator Die()
     {
+
+        if(Random.Range(0, coinDrop) == coinDrop - 1) {
+            Instantiate(coin, gameObject.transform.position, Quaternion.identity);
+        }
+
         healthCanvas.enabled = false;
         yield return new WaitForSeconds(3f);   //Wait
         Destroy(gameObject);
