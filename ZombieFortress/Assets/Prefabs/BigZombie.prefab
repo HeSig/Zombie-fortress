@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7.5
+  MAXHEALTH: 200
   health: 200
   nextNode: {fileID: 0}
   damage: 2

@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstNode: {fileID: 0}
-  normalZombieObject: {fileID: 1868370297691056424, guid: 4eb569a63b87cc6459e39588a40c6e0e,
-    type: 3}
-  BigZombieObject: {fileID: 1868370297691056424, guid: 542fa8fe15c92e64293f9095bb43bb0b,
-    type: 3}
+  ZombieList:
+  - {fileID: 1868370297691056424, guid: 4eb569a63b87cc6459e39588a40c6e0e, type: 3}
+  - {fileID: 1868370297691056424, guid: 542fa8fe15c92e64293f9095bb43bb0b, type: 3}
   numberOfZombies: 0
