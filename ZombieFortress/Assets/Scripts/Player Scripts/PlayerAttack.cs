@@ -55,7 +55,10 @@ public class PlayerAttack : MonoBehaviour {
             if(hit.transform.tag == Tags.ENEMY_TAG) {
         
                 hit.transform.GetComponent<ZombieScript>().health -= damage;
-        
+            }
+            if(hit.transform.tag == Tags.ZOMBIE_TAG){
+                hit.transform.GetComponent<HealthScript>().ApplyDamage(damage);
+
             }
 
         }
