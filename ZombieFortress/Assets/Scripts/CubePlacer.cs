@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CubePlacer : MonoBehaviour {
     private Grid grid;
+    public GameObject prefabGrid;
 
     private void Awake(){
         grid = FindObjectOfType<Grid>();
