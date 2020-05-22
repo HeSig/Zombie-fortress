@@ -13,7 +13,7 @@ public class HealthScript : MonoBehaviour
     public float health = 100f;
     public bool is_Zombie, is_Player;
     private bool is_Dead;
-
+    private ZombieAudio zombieAudio;
     // Start is called before the first frame update
     void Awake() {
         if(is_Zombie){
@@ -21,6 +21,7 @@ public class HealthScript : MonoBehaviour
             enemy_Controller = GetComponent<ZombieController>();
             navAgent = GetComponent<NavMeshAgent>();
             //get enemy Audio
+            zombieAudio = GetComponentInChildren<ZombieAudio>();
         }
         if(is_Player){
 
@@ -45,7 +46,7 @@ public class HealthScript : MonoBehaviour
         }
         if(health <= 0f){
             PlayerDied();   
-            is_Dead = true;             
+            is_Dead = true;      
         }
 
     } //apply damage
@@ -56,8 +57,8 @@ public class HealthScript : MonoBehaviour
             navAgent.isStopped = true;
             enemy_Controller.enabled = false;
             enemy_Anim.Dead();
-
             //StartCoroutine
+            StartCoroutine(DeadSound());
         }
         if(is_Player){
             GameObject [] enemies = GameObject.FindGameObjectsWithTag(Tags.ZOMBIE_TAG);
@@ -85,7 +86,10 @@ public class HealthScript : MonoBehaviour
         gameObject.SetActive(false);    
     }
 
-
+    IEnumerator DeadSound(){
+        yield return new WaitForSeconds(0.3f);
+        zombieAudio.Play_DeadSound();
+    }
 
 
 

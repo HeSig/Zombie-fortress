@@ -29,12 +29,14 @@ public class ZombieController : MonoBehaviour {
     private Transform target;
     public GameObject attack_Point;
 
+    private ZombieAudio zombie_Audio;
+
     void Awake() {
         enemy_Anim = GetComponent<ZombieAnimator>();
         navAgent = GetComponent<NavMeshAgent>();
 
         target = GameObject.FindWithTag(Tags.PLAYER_TAG).transform;
-         
+        zombie_Audio = GetComponentInChildren<ZombieAudio>();
      }
 
     // Start is called before the first frame update
@@ -83,10 +85,10 @@ public class ZombieController : MonoBehaviour {
         {
             enemy_Anim.Walk(false);
         }
-        if(Vector3.Distance(transform.position, target.position) <= chase_Distance)
-        {
+        if(Vector3.Distance(transform.position, target.position) <= chase_Distance) {
             enemy_Anim.Walk(false);
             enemy_State = ZombieState.CHASE;
+            zombie_Audio.Play_ScreamSound();
         }
 
 
@@ -142,6 +144,7 @@ public class ZombieController : MonoBehaviour {
         {
             enemy_Anim.Attack();
             attack_Timer = 0f;
+            zombie_Audio.Play_AttackSound();
         }
         if(Vector3.Distance(transform.position, target.position) > attack_Distance + chase_After_Attack_Distance)
         {
