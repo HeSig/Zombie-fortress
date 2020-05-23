@@ -101,23 +101,19 @@ public class ZombieController : MonoBehaviour {
         navAgent.speed = run_Speed;
         //set the players position as the destination necause we are chasing the player
         navAgent.SetDestination(target.position);
-        if(navAgent.velocity.sqrMagnitude > 0)
-        {
+        if(navAgent.velocity.sqrMagnitude > 0) {
             enemy_Anim.Run(true);
-        }else
-        {
+        }else {
             enemy_Anim.Run(false);
         }
         //if the distance between enemy and the player is less than attack distance 
-        if(Vector3.Distance(transform.position, target.position)<= attack_Distance)
-        {
+        if(Vector3.Distance(transform.position, target.position)<= attack_Distance) {
             //stop the animation
             enemy_Anim.Run(false);
             enemy_Anim.Walk(false);
             enemy_State = ZombieState.ATTACK;
             //reset the chase distance to previous
-            if(chase_Distance != current_Chase_Distance)
-            {
+            if(chase_Distance != current_Chase_Distance) {
                 chase_Distance = current_Chase_Distance;
             }
         }else if(Vector3.Distance(transform.position, target.position) > chase_Distance) {
