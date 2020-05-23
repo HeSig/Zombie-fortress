@@ -42,16 +42,6 @@ public class ZombieScript : MonoBehaviour
     {
         healthBar.fillAmount = health / MAXHEALTH;
 
-        if (health <= 0)
-        {
-            mainControllerScript.zombieCount -= 1;
-            mainControllerScript.score += scoreValue;
-            animator.SetBool("Dead", true);
-            GetComponent<Rigidbody>().freezeRotation = true;
-            GetComponent<Rigidbody>().Sleep();
-            dead = true;
-            StartCoroutine("Die");
-        }
 
         if (nextNode != null && !dead)
         {
@@ -90,6 +80,18 @@ public class ZombieScript : MonoBehaviour
                 //health -= 1;
 
             }
+
+         if (health <= 0)
+        {
+            mainControllerScript.zombieCount -= 1;
+            mainControllerScript.score += scoreValue;
+            animator.SetBool("Dead", true);
+            GetComponent<Rigidbody>().freezeRotation = true;
+            GetComponent<Rigidbody>().Sleep();
+            dead = true;
+            StartCoroutine("Die");
+            Debug.Log("Ayy caramba");
+        }
 
         }
     }

@@ -40,7 +40,7 @@ public class GameControllerScript : MonoBehaviour
         zombiesLeft = gameCamera.gameObject.transform.Find("ZombiesLeft").GetComponent<TMPro.TextMeshProUGUI>();
         gateHealth = gameCamera.gameObject.transform.Find("GateHealth").GetComponent<TMPro.TextMeshProUGUI>();
         moneyText = gameCamera.gameObject.transform.Find("Money").GetComponent<TMPro.TextMeshProUGUI>();
-        loseText.text = "Press space to start next level";
+        loseText.text = "Press N to start next level";
 
 
         //Start first level
@@ -70,7 +70,7 @@ public class GameControllerScript : MonoBehaviour
         {
             levelsCleared[currentLevel] = true;
             levelRunning = false;
-            loseText.text = "Press space to start next level";
+            loseText.text = "Press N to start next level";
         }
 
         //If the gate is destroyed the player loses
@@ -80,7 +80,7 @@ public class GameControllerScript : MonoBehaviour
         }
 
         //Checks if there are any zombies left, and if the zombieSpawner has spawned all of its zombies.
-        if (SpacePress())
+        if (NextPress())
         {
             if (!levelRunning)
             {
@@ -111,8 +111,8 @@ public class GameControllerScript : MonoBehaviour
         Gizmos.DrawCube(transform.position, new Vector3(3, 3, 3));
     }
 
-    private bool SpacePress()
+    private bool NextPress()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return Input.GetKeyDown(KeyCode.N);
     }
 }
