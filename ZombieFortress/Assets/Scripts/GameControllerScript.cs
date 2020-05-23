@@ -15,15 +15,19 @@ public class GameControllerScript : MonoBehaviour
     bool[] levelsCleared = { false, false, false, false, false, false }; //Array of boolean values that show if a level has been completed or not (Can be removed at some point)
     bool levelRunning;
     public int score;
+    public static int Money;
+    public int startMoney = 100;
     TextMeshProUGUI scoreText;
     TextMeshProUGUI loseText;
     TextMeshProUGUI zombiesLeft;
     TextMeshProUGUI gateHealth;
+    TextMeshProUGUI moneyText;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
+        Money = startMoney;
         gate = GameObject.FindGameObjectsWithTag("Finish")[0];
         gameCamera = GameObject.FindGameObjectsWithTag("UI")[0];
 
@@ -35,6 +39,7 @@ public class GameControllerScript : MonoBehaviour
         scoreText = gameCamera.gameObject.transform.Find("Score").GetComponent<TMPro.TextMeshProUGUI>();
         zombiesLeft = gameCamera.gameObject.transform.Find("ZombiesLeft").GetComponent<TMPro.TextMeshProUGUI>();
         gateHealth = gameCamera.gameObject.transform.Find("GateHealth").GetComponent<TMPro.TextMeshProUGUI>();
+        moneyText = gameCamera.gameObject.transform.Find("Money").GetComponent<TMPro.TextMeshProUGUI>();
         loseText.text = "Press space to start next level";
 
 
@@ -59,6 +64,7 @@ public class GameControllerScript : MonoBehaviour
         scoreText.text = "Score " + score;
         zombiesLeft.text = "Zombies Left " + zombieCount.ToString();
         gateHealth.text = "Gate Health " + gate.GetComponent<GateScript>().health.ToString();
+        moneyText.text = "Money " + Money;
 
         if (zombieCount == 0 && levelRunning)
         {
