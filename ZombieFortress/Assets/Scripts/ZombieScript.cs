@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ZombieScript : MonoBehaviour
 {
     public float moveSpeed = 1f;
+    public float MAXHEALTH = 100f;
     public float health = 100f;
     public GameObject nextNode;
     public int damage = 1;
@@ -22,6 +23,8 @@ public class ZombieScript : MonoBehaviour
     [Header("Unity stuff")]
     public Image healthBar;
     public Canvas healthCanvas;
+    public GameObject coin;
+    public int coinDrop;
 
 
     // Start is called before the first frame update
@@ -37,9 +40,21 @@ public class ZombieScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = health / 100f;
+        healthBar.fillAmount = health / MAXHEALTH;
 
-        if (nextNode != null && !dead) {
+        if (health <= 0)
+        {
+            mainControllerScript.zombieCount -= 1;
+            mainControllerScript.score += scoreValue;
+            animator.SetBool("Dead", true);
+            GetComponent<Rigidbody>().freezeRotation = true;
+            GetComponent<Rigidbody>().Sleep();
+            dead = true;
+            StartCoroutine("Die");
+        }
+
+        if (nextNode != null && !dead)
+        {
             float step = moveSpeed * Time.deltaTime;
 
             _direction = (new Vector3(nextNode.transform.position.x, transform.position.y, nextNode.transform.position.z) - transform.position).normalized;
@@ -49,9 +64,10 @@ public class ZombieScript : MonoBehaviour
 
             step = step / 7;
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(nextNode.transform.position.x, transform.position.y, nextNode.transform.position.z), step);
-            if(transform.position.x == nextNode.transform.position.x && transform.position.z == nextNode.transform.position.z)
+            if (transform.position.x == nextNode.transform.position.x && transform.position.z == nextNode.transform.position.z)
             {
-                if(nextNode.tag != "Finish") { 
+                if (nextNode.tag != "Finish")
+                {
                     nextNode = nextNode.GetComponent<WalkNodeScript>().nextNode;
                 }
             }
@@ -60,34 +76,31 @@ public class ZombieScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!dead) { 
-        if (other.gameObject.tag == "Finish")
+        if (!dead)
         {
-            Debug.Log("Collission");
-            goal = other.gameObject;
-            StartCoroutine("DealGateDamage");
-        }
-        if (other.gameObject.name == "Bullet_Prefab")
-        {
-            Debug.Log("HIT");
+            if (other.gameObject.tag == "Finish")
+            {
+                Debug.Log("Collission");
+                goal = other.gameObject;
+                StartCoroutine("DealGateDamage");
+            }
+            if (other.gameObject.name == "Bullet_Prefab")
+            {
+                Debug.Log("HIT");
                 //health -= 1;
-                
+
             }
-        if (health <= 0)
-        {
-            mainControllerScript.zombieCount -= 1;
-                mainControllerScript.score += scoreValue;
-            animator.SetBool("Dead", true);
-                GetComponent<Rigidbody>().freezeRotation = true;
-                GetComponent<Rigidbody>().Sleep();
-                dead = true;
-                StartCoroutine("Die");
-            }
+
         }
     }
 
     IEnumerator Die()
     {
+
+        if(Random.Range(0, coinDrop) == coinDrop - 1) {
+            Instantiate(coin, gameObject.transform.position, Quaternion.identity);
+        }
+
         healthCanvas.enabled = false;
         yield return new WaitForSeconds(3f);   //Wait
         Destroy(gameObject);

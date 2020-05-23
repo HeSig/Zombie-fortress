@@ -4,9 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Crosshair
+  - Tower Shop
+  - UI
   - WalkNode
+  - Look Root
+  - FP Camera
   - Enemy
-  - Spawner
+  - Coin
   layers:
   - Default
   - TransparentFX

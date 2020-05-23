@@ -39,10 +39,4 @@ public class TowerBulletScript : MonoBehaviour
             active = false;
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(direction, 1f);
-    }
 }
