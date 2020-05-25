@@ -17,6 +17,7 @@ public class AttackScript : MonoBehaviour
         {
             hits[0].gameObject.GetComponent<HealthScript>().ApplyDamage(damage);
             gameObject.SetActive(false);
+            print(hits[0].gameObject.GetComponent<HealthScript>().health);
         }
     }
 }

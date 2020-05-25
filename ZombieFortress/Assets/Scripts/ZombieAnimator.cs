@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class ZombieAnimator : MonoBehaviour {
     private Animator anim;
-
-
+    
     void Awake() {
         anim = GetComponent<Animator>();
     }
