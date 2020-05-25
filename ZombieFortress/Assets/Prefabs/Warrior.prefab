@@ -193,8 +193,6 @@ MonoBehaviour:
   attack_Clips:
   - {fileID: 8300000, guid: 1d3ce892e27384bd2b9edfe2dfec5789, type: 3}
   - {fileID: 8300000, guid: 1094fbf3cc313476984cc7fc0a4546ef, type: 3}
-  - {fileID: 8300000, guid: fb460fb243a77466a9702f5655b07b9f, type: 3}
-  - {fileID: 8300000, guid: 63f62286096f54969bff5f40ad98f158, type: 3}
 --- !u!1 &127920477743249695
 GameObject:
   m_ObjectHideFlags: 0

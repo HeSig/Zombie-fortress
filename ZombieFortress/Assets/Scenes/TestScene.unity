@@ -4029,10 +4029,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 773628933}
     m_Modifications:
-    - target: {fileID: 1221906933, guid: 8154407d9bd239245b86282d48b52198, type: 3}
-      propertyPath: attack_Clips.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 724132280356974699, guid: 8154407d9bd239245b86282d48b52198,
         type: 3}
       propertyPath: m_Name
