@@ -7,6 +7,8 @@ public class PlayerAttack : MonoBehaviour {
     private WeaponManager weapon_Manager;
     private Camera mainCam;
     private GameObject crosshair;
+    public GameObject bulletObject;
+    public GameObject shotgun;
 
     private float nextTimeToFire;
 
@@ -22,6 +24,7 @@ public class PlayerAttack : MonoBehaviour {
         mainCam = Camera.main;
 
         crosshair = GameObject.FindWithTag(Tags.CROSSHAIR);
+        shotgun = GameObject.FindGameObjectWithTag("Shotgun");
 
     }
 
@@ -40,29 +43,22 @@ public class PlayerAttack : MonoBehaviour {
 
                 weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
 
-                BulletFired();
+                fireBullet(30);
 
             }
         
     }
 
-    void BulletFired() {
-
-        RaycastHit hit;
-
-        if(Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit)) {
-
-            if(hit.transform.tag == Tags.ENEMY_TAG) {
-        
-                hit.transform.GetComponent<ZombieScript>().health -= damage;
-            }
-            if(hit.transform.tag == Tags.ZOMBIE_TAG){
-                hit.transform.GetComponent<HealthScript>().ApplyDamage(damage);
-
-            }
-
-        }
-
+    void fireBullet(int damage)
+    {
+        shotgun = GameObject.FindGameObjectWithTag("Shotgun");
+        float shotgunY = shotgun.transform.position.y;
+        float shotgunX = shotgun.transform.position.x;
+        Vector3 shotgunVector = new Vector3(shotgunX, shotgunY, shotgun.transform.position.z);
+        GameObject bullet = Instantiate(bulletObject, shotgunVector, Quaternion.identity);
+        bullet.GetComponent<Rigidbody>().velocity = shotgun.transform.forward * 20;
+        bullet.GetComponent<TowerBulletScript>().damage = damage;
+        //rotationScript.fire();
     }
 
 }

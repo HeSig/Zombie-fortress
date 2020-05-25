@@ -11,7 +11,7 @@ public class TowerBulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine("AutoDestroy");
     }
 
     // Update is called once per frame
@@ -27,6 +27,12 @@ public class TowerBulletScript : MonoBehaviour
             
             Destroy(gameObject);
         }
+    }
+    IEnumerator AutoDestroy()
+    {
+
+        yield return new WaitForSeconds(5f);   //Wait
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter(Collider col)

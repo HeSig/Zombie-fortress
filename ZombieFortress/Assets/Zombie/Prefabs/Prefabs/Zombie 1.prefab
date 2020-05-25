@@ -1647,7 +1647,148 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: '
+
+    Transform ''Base HumanLLegDigit11'' has been deleted
+
+    Transform
+    ''Base HumanLLegFoot'' has been deleted
+
+    Transform ''Base HumanLLegCalf''
+    has been deleted
+
+    Transform ''Base HumanLLegThigh'' has been deleted
+
+    Transform
+    ''Base HumanRDigit11'' has been deleted
+
+    Transform ''Base HumanRFoot'' has
+    been deleted
+
+    Transform ''Base HumanRCalf'' has been deleted
+
+    Transform
+    ''Base HumanRThigh'' has been deleted
+
+    Transform ''Base HumanLArmDigit12''
+    has been deleted
+
+    Transform ''Base HumanLArmDigit11'' has been deleted
+
+    Transform
+    ''Base HumanLArmDigit23'' has been deleted
+
+    Transform ''Base HumanLArmDigit22''
+    has been deleted
+
+    Transform ''Base HumanLArmDigit21'' has been deleted
+
+    Transform
+    ''Base HumanLArmDigit33'' has been deleted
+
+    Transform ''Base HumanLArmDigit32''
+    has been deleted
+
+    Transform ''Base HumanLArmDigit31'' has been deleted
+
+    Transform
+    ''Base HumanLArmDigit43'' has been deleted
+
+    Transform ''Base HumanLArmDigit42''
+    has been deleted
+
+    Transform ''Base HumanLArmDigit41'' has been deleted
+
+    Transform
+    ''Base HumanLArmDigit53'' has been deleted
+
+    Transform ''Base HumanLArmDigit52''
+    has been deleted
+
+    Transform ''Base HumanLArmDigit51'' has been deleted
+
+    Transform
+    ''Base HumanLArmPalm'' has been deleted
+
+    Transform ''Base HumanLArmForearm''
+    has been deleted
+
+    Transform ''Base HumanLArmUpperarm'' has been deleted
+
+    Transform
+    ''Base HumanLArmCollarbone'' has been deleted
+
+    Transform ''Base HumanHeadJaw''
+    has been deleted
+
+    Transform ''Base HumanHeadREye'' has been deleted
+
+    Transform
+    ''Base HumanLEye'' has been deleted
+
+    Transform ''Base HumanHead'' has been
+    deleted
+
+    Transform ''Base HumanNeck'' has been deleted
+
+    Transform ''Base
+    HumanRArmDigit12'' has been deleted
+
+    Transform ''Base HumanRArmDigit11''
+    has been deleted
+
+    Transform ''Base HumanRArmDigit23'' has been deleted
+
+    Transform
+    ''Base HumanRArmDigit22'' has been deleted
+
+    Transform ''Base HumanRArmDigit21''
+    has been deleted
+
+    Transform ''Base HumanRArmDigit33'' has been deleted
+
+    Transform
+    ''Base HumanRArmDigit32'' has been deleted
+
+    Transform ''Base HumanRArmDigit31''
+    has been deleted
+
+    Transform ''Base HumanRArmDigit43'' has been deleted
+
+    Transform
+    ''Base HumanRArmDigit42'' has been deleted
+
+    Transform ''Base HumanRArmDigit41''
+    has been deleted
+
+    Transform ''Base HumanRArmDigit53'' has been deleted
+
+    Transform
+    ''Base HumanRArmDigit52'' has been deleted
+
+    Transform ''Base HumanRArmDigit51''
+    has been deleted
+
+    Transform ''Base HumanRArmPalm'' has been deleted
+
+    Transform
+    ''Base HumanRArmForearm'' has been deleted
+
+    Transform ''Base HumanRArmUpperarm''
+    has been deleted
+
+    Transform ''Base HumanRArmCollarbone'' has been deleted
+
+    Transform
+    ''Base HumanRibcage'' has been deleted
+
+    Transform ''Base HumanSpine2'' has
+    been deleted
+
+    Transform ''Base HumanSpine1'' has been deleted
+
+    Transform
+    ''Base HumanPelvis'' has been deleted'
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0

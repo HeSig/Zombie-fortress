@@ -39,7 +39,9 @@ public class ExplosionTowerScript : MonoBehaviour
 
             if (zombies[0] == null || zombies[0].GetComponent<ZombieScript>().dead)
             {
-                zombies.RemoveAt(0);
+                while(zombies[0] == null || zombies[0].GetComponent<ZombieScript>().dead) { 
+                    zombies.RemoveAt(0);
+                }
             }
             else
             {

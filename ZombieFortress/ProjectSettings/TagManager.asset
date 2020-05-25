@@ -12,6 +12,7 @@ TagManager:
   - FP Camera
   - Enemy
   - Coin
+  - Shotgun
   layers:
   - Default
   - TransparentFX
