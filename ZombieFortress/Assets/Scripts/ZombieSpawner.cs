@@ -33,9 +33,7 @@ public class ZombieSpawner : MonoBehaviour
     IEnumerator Spawn()
     {
         if(numberOfZombies > 0) {
-
             Instantiate(ZombieList[Random.Range(0, ZombieList.Length)], transform.position, Quaternion.identity).GetComponent<ZombieScript>().nextNode = firstNode;
-
             yield return new WaitForSeconds(2.5f);   //Wait
             numberOfZombies--;
             StartCoroutine("Spawn");

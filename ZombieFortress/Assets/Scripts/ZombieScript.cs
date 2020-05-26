@@ -19,6 +19,7 @@ public class ZombieScript : MonoBehaviour
     public bool dead = false;
     Animator animator;
     int scoreValue = 10;
+    public int yoffset;
 
     [Header("Unity stuff")]
     public Image healthBar;
@@ -30,6 +31,7 @@ public class ZombieScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        yoffset = 0;
         scoreValue = 10;
         animator = GetComponentInChildren<Animator>();
         mainControllerScript = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameControllerScript>();

@@ -42,7 +42,7 @@ Transform:
   m_GameObject: {fileID: 1868370297691056424}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 12.706, y: 0.78059, z: -1.1883}
-  m_LocalScale: {x: 2.2773576, y: 2.2773576, z: 2.2773576}
+  m_LocalScale: {x: 2.2773576, y: 1.5141, z: 2.2773576}
   m_Children:
   - {fileID: 1074340356108837067}
   m_Father: {fileID: 0}
@@ -128,6 +128,7 @@ MonoBehaviour:
   damage: 2
   rotationSpeed: 0
   dead: 0
+  yoffset: 0
   healthBar: {fileID: 129815924811793027}
   healthCanvas: {fileID: 5254772189224582018}
   coin: {fileID: 2181874340003642561, guid: 2709588849ce9d3418d6e2411f9bc6d6, type: 3}
