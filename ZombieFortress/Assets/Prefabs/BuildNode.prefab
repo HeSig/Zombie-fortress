@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4619382969042224423}
   - component: {fileID: 4619382969042224420}
   - component: {fileID: 4619382969042224421}
-  - component: {fileID: 4619382969042224408}
+  - component: {fileID: 3043134930413636457}
   - component: {fileID: 1211961926137909476}
   m_Layer: 0
   m_Name: BuildNode
@@ -112,7 +112,7 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 4.34, z: 0}
   towerShop: {fileID: 0}
   tower: {fileID: 0}
---- !u!114 &4619382969042224408
+--- !u!114 &3043134930413636457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
