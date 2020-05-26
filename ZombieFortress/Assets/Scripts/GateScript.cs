@@ -6,10 +6,11 @@ public class GateScript : MonoBehaviour
 {
 
     public int health = 10;
+    public bool destroyed = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        destroyed = false;
     }
 
     // Update is called once per frame
@@ -17,7 +18,7 @@ public class GateScript : MonoBehaviour
     {
         if(health <= 0)
         {
-            Destroy(gameObject);
+            destroyed = true;
         }
     }
 }

@@ -22,9 +22,13 @@ public class BuildManager : MonoBehaviour {
         if (GameControllerScript.Money < towerToBuild.cost)
             return;
 
-        GameControllerScript.Money -= towerToBuild.cost;
+        
 
         GameObject tower = (GameObject)Instantiate(towerToBuild.prefab, currentNode.GetBuildPosition(), Quaternion.identity);
+        if(tower != null)
+        {
+            GameControllerScript.Money -= towerToBuild.cost;
+        }
         currentNode.tower = tower;
 
         currentNode.towerShop.SetActive(false);

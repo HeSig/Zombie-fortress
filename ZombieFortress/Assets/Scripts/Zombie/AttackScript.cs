@@ -15,9 +15,10 @@ public class AttackScript : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(transform.position, radius, layerMask);
         if(hits.Length > 0)
         {
-            hits[0].gameObject.GetComponent<HealthScript>().ApplyDamage(damage);
+            hits[0].gameObject.GetComponentInParent<HealthScript>().ApplyDamage(damage);
+            //hits[0].gameObject.GetComponent<HealthScript>().ApplyDamage(damage);
             gameObject.SetActive(false);
-            print(hits[0].gameObject.GetComponent<HealthScript>().health);
+            //print(hits[0].gameObject.GetComponent<HealthScript>().health);
         }
     }
 }

@@ -43,6 +43,12 @@ public class TowerBulletScript : MonoBehaviour
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             gameObject.GetComponent<TrailRenderer>().emitting = false;
             active = false;
+        }else if(col.gameObject.tag == "Zombie")
+        {
+            col.gameObject.GetComponent<HealthScript>().ApplyDamage(damage);
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<TrailRenderer>().emitting = false;
+            active = false;
         }
     }
 }
