@@ -7,8 +7,7 @@ public class WeaponHandler : MonoBehaviour
 
     private Animator anim;
 
-    [SerializeField]
-    private GameObject muzzleFlash;
+    //[SerializeField] private GameObject muzzleFlash;
 
     [SerializeField]
     private AudioSource shootSound, reload_Sound;
@@ -20,7 +19,8 @@ public class WeaponHandler : MonoBehaviour
     public void ShootAnimation() {
           anim.SetTrigger(AnimationTags.SHOOT_TRIGGER);  
     }
-
+    
+    /*
     void Turn_On_MuzzleFlash() {
         muzzleFlash.SetActive(true);
     }
@@ -28,6 +28,7 @@ public class WeaponHandler : MonoBehaviour
     void Turn_Off_MuzzleFlash() {
         muzzleFlash.SetActive(false);
     }
+    */
 
     void Play_ShootSound() {
         shootSound.Play();

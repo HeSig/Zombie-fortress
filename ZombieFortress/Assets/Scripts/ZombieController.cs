@@ -176,11 +176,5 @@ public class ZombieController : MonoBehaviour {
             enemy_State = value;
         }
     }
-
-
-
-
-
-
 }
 
