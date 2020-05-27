@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 
@@ -13,15 +14,18 @@ public class GameControllerScript : MonoBehaviour
     int[] levels = { 5, 10, 15, 20, 25, 30 }; //Number of zombies spawned in each level
     int currentLevel = 0; //Counter for the current level
     bool[] levelsCleared = { false, false, false, false, false, false }; //Array of boolean values that show if a level has been completed or not (Can be removed at some point)
+    public GameObject[] chasingZombieSpawners;
     bool levelRunning;
     public int score;
     public static int Money;
     public int startMoney = 100;
+    GameObject player;
     TextMeshProUGUI scoreText;
     TextMeshProUGUI loseText;
     TextMeshProUGUI zombiesLeft;
     TextMeshProUGUI gateHealth;
     TextMeshProUGUI moneyText;
+    TextMeshProUGUI playerHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +36,7 @@ public class GameControllerScript : MonoBehaviour
         gameCamera = GameObject.FindGameObjectsWithTag("UI")[0];
 
         //zombieSpawner = GameObject.FindGameObjectWithTag("Spawner"); //The zombiespawner object, to be corrected later.
-
+        player = GameObject.FindGameObjectWithTag("Player");
         zombieCount = levels[currentLevel];
         levelRunning = false;
         loseText = gameCamera.gameObject.transform.Find("LoseText").GetComponent<TMPro.TextMeshProUGUI>();
@@ -40,7 +44,9 @@ public class GameControllerScript : MonoBehaviour
         zombiesLeft = gameCamera.gameObject.transform.Find("ZombiesLeft").GetComponent<TMPro.TextMeshProUGUI>();
         gateHealth = gameCamera.gameObject.transform.Find("GateHealth").GetComponent<TMPro.TextMeshProUGUI>();
         moneyText = gameCamera.gameObject.transform.Find("Money").GetComponent<TMPro.TextMeshProUGUI>();
-        loseText.text = "Press N to start next level";
+        playerHealth = gameCamera.gameObject.transform.Find("PlayerHP").GetComponent<TMPro.TextMeshProUGUI>();
+        playerHealth.SetText("Player Health " + player.GetComponent<HealthScript>().health);
+        loseText.text = "Press space to start next level";
 
 
         //Start first level
@@ -61,26 +67,37 @@ public class GameControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerHealth.SetText("Player Health " + player.GetComponent<HealthScript>().health);
+        int numberOfZombiesLeft = 0;
+        int walkingZombies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        int chasingZombies = GameObject.FindGameObjectsWithTag("Zombie").Length;
+        numberOfZombiesLeft = chasingZombies + zombieCount;
+
         scoreText.text = "Score " + score;
-        zombiesLeft.text = "Zombies Left " + zombieCount.ToString();
+        zombiesLeft.text = "Zombies Left " + numberOfZombiesLeft.ToString();
         gateHealth.text = "Gate Health " + gate.GetComponent<GateScript>().health.ToString();
         moneyText.text = "Money " + Money;
 
-        if (zombieCount == 0 && levelRunning)
+        if (numberOfZombiesLeft == 0 && levelRunning)
         {
             levelsCleared[currentLevel] = true;
             levelRunning = false;
-            loseText.text = "Press N to start next level";
+            loseText.text = "Press space to start next level";
         }
 
         //If the gate is destroyed the player loses
-        if (gate == null)
+        if (gate.GetComponent<GateScript>().destroyed)
         {
-            loseText.text = "YOU LOSE";
+            loseText.text = "YOU LOSE, press space to restart";
+
+            if (SpacePress())
+            {
+                SceneManager.LoadScene(1);
+            }
         }
 
         //Checks if there are any zombies left, and if the zombieSpawner has spawned all of its zombies.
-        if (NextPress())
+        if (SpacePress())
         {
             if (!levelRunning)
             {
@@ -101,7 +118,15 @@ public class GameControllerScript : MonoBehaviour
                         break;
                     }
                 }
+                for(int i = 0; i < chasingZombieSpawners.Length; i++)
+                {
+                    chasingZombieSpawners[i].GetComponent<ChasingZombieSpawner>().SpawnZombie();
+                }
             }
+        }
+        if (levelsCleared[levelsCleared.Length-1])
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
@@ -111,8 +136,8 @@ public class GameControllerScript : MonoBehaviour
         Gizmos.DrawCube(transform.position, new Vector3(3, 3, 3));
     }
 
-    private bool NextPress()
+    private bool SpacePress()
     {
-        return Input.GetKeyDown(KeyCode.N);
+        return Input.GetKeyDown(KeyCode.Space);
     }
 }

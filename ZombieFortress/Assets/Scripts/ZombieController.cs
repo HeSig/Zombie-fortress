@@ -29,12 +29,14 @@ public class ZombieController : MonoBehaviour {
     private Transform target;
     public GameObject attack_Point;
 
+    private ZombieAudio zombie_Audio;
+
     void Awake() {
         enemy_Anim = GetComponent<ZombieAnimator>();
         navAgent = GetComponent<NavMeshAgent>();
 
         target = GameObject.FindWithTag(Tags.PLAYER_TAG).transform;
-         
+        zombie_Audio = GetComponentInChildren<ZombieAudio>();
      }
 
     // Start is called before the first frame update
@@ -83,10 +85,10 @@ public class ZombieController : MonoBehaviour {
         {
             enemy_Anim.Walk(false);
         }
-        if(Vector3.Distance(transform.position, target.position) <= chase_Distance)
-        {
+        if(Vector3.Distance(transform.position, target.position) <= chase_Distance) {
             enemy_Anim.Walk(false);
             enemy_State = ZombieState.CHASE;
+            zombie_Audio.Play_ScreamSound();
         }
 
 
@@ -99,23 +101,19 @@ public class ZombieController : MonoBehaviour {
         navAgent.speed = run_Speed;
         //set the players position as the destination necause we are chasing the player
         navAgent.SetDestination(target.position);
-        if(navAgent.velocity.sqrMagnitude > 0)
-        {
+        if(navAgent.velocity.sqrMagnitude > 0) {
             enemy_Anim.Run(true);
-        }else
-        {
+        }else {
             enemy_Anim.Run(false);
         }
         //if the distance between enemy and the player is less than attack distance 
-        if(Vector3.Distance(transform.position, target.position)<= attack_Distance)
-        {
+        if(Vector3.Distance(transform.position, target.position)<= attack_Distance) {
             //stop the animation
             enemy_Anim.Run(false);
             enemy_Anim.Walk(false);
             enemy_State = ZombieState.ATTACK;
             //reset the chase distance to previous
-            if(chase_Distance != current_Chase_Distance)
-            {
+            if(chase_Distance != current_Chase_Distance) {
                 chase_Distance = current_Chase_Distance;
             }
         }else if(Vector3.Distance(transform.position, target.position) > chase_Distance) {
@@ -142,6 +140,7 @@ public class ZombieController : MonoBehaviour {
         {
             enemy_Anim.Attack();
             attack_Timer = 0f;
+            zombie_Audio.Play_AttackSound();
         }
         if(Vector3.Distance(transform.position, target.position) > attack_Distance + chase_After_Attack_Distance)
         {

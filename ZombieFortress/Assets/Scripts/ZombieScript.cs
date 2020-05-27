@@ -19,6 +19,7 @@ public class ZombieScript : MonoBehaviour
     public bool dead = false;
     Animator animator;
     int scoreValue = 10;
+    public int yoffset;
 
     [Header("Unity stuff")]
     public Image healthBar;
@@ -30,6 +31,7 @@ public class ZombieScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        yoffset = 0;
         scoreValue = 10;
         animator = GetComponentInChildren<Animator>();
         mainControllerScript = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameControllerScript>();
@@ -42,6 +44,16 @@ public class ZombieScript : MonoBehaviour
     {
         healthBar.fillAmount = health / MAXHEALTH;
 
+        if (health <= 0 && !dead)
+        {
+            mainControllerScript.zombieCount -= 1;
+            mainControllerScript.score += scoreValue;
+            animator.SetBool("Dead", true);
+            GetComponent<Rigidbody>().freezeRotation = true;
+            GetComponent<Rigidbody>().Sleep();
+            dead = true;
+            StartCoroutine("Die");
+        }
 
         if (nextNode != null && !dead)
         {
@@ -80,18 +92,6 @@ public class ZombieScript : MonoBehaviour
                 //health -= 1;
 
             }
-
-         if (health <= 0)
-        {
-            mainControllerScript.zombieCount -= 1;
-            mainControllerScript.score += scoreValue;
-            animator.SetBool("Dead", true);
-            GetComponent<Rigidbody>().freezeRotation = true;
-            GetComponent<Rigidbody>().Sleep();
-            dead = true;
-            StartCoroutine("Die");
-            Debug.Log("Ayy caramba");
-        }
 
         }
     }

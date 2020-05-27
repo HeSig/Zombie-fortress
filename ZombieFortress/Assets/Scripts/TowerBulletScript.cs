@@ -11,7 +11,7 @@ public class TowerBulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine("AutoDestroy");
     }
 
     // Update is called once per frame
@@ -28,12 +28,24 @@ public class TowerBulletScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    IEnumerator AutoDestroy()
+    {
+
+        yield return new WaitForSeconds(5f);   //Wait
+        Destroy(gameObject);
+    }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Enemy" && active && !col.GetComponent<ZombieScript>().dead)
         {
             col.gameObject.GetComponent<ZombieScript>().health -= damage;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<TrailRenderer>().emitting = false;
+            active = false;
+        }else if(col.gameObject.tag == "Zombie")
+        {
+            col.gameObject.GetComponent<HealthScript>().ApplyDamage(damage);
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             gameObject.GetComponent<TrailRenderer>().emitting = false;
             active = false;

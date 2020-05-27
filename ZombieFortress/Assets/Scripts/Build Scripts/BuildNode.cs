@@ -43,7 +43,7 @@ public class BuildNode : MonoBehaviour {
                 buildManager.SetCurrentNode(this);
         
                 towerShop.SetActive(true);
-                crosshair.SetActive(false);
+                //crosshair.SetActive(false);
 
             }
         }
@@ -52,7 +52,7 @@ public class BuildNode : MonoBehaviour {
     void OnTriggerExit() {
 
         towerShop.SetActive(false);
-        crosshair.SetActive(true);
+        //crosshair.SetActive(true);
 
     }
 
