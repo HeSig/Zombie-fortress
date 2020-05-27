@@ -2629,6 +2629,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1257362644, guid: c165466fe1cd7e04a84db028a86d1120, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8124892658619812193, guid: c165466fe1cd7e04a84db028a86d1120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2688,6 +2692,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296172669189694626, guid: c165466fe1cd7e04a84db028a86d1120,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c165466fe1cd7e04a84db028a86d1120, type: 3}
@@ -3237,6 +3246,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1168356530174633370, guid: 0d6a47b93bb9ae94ab2f6f4abc54e5a2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168356530174633370, guid: 0d6a47b93bb9ae94ab2f6f4abc54e5a2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168356530174633370, guid: 0d6a47b93bb9ae94ab2f6f4abc54e5a2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1168356530174633370, guid: 807d034d8a9264d459a4883d5e42785b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3296,21 +3320,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ExplosionTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1168356530174633370, guid: 0d6a47b93bb9ae94ab2f6f4abc54e5a2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 11.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 1168356530174633370, guid: 0d6a47b93bb9ae94ab2f6f4abc54e5a2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 1168356530174633370, guid: 0d6a47b93bb9ae94ab2f6f4abc54e5a2,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d6a47b93bb9ae94ab2f6f4abc54e5a2, type: 3}
