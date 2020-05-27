@@ -20,15 +20,15 @@ public class PlayerAttack : MonoBehaviour {
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public float impactForce = 30f;
-    public int maxAmo = 4;
+    public int maxAmmoMagazine = 4;
+    public int maxAmo = 12;
     private int currentAmo;
     public float reloadTime = 3f;
-
     private bool isReloading = false;
     public Animator animator;
 
     void Start(){
-        currentAmo = maxAmo;
+        currentAmo = maxAmmoMagazine;
     }
 
     void Awake() {
@@ -52,28 +52,29 @@ public class PlayerAttack : MonoBehaviour {
             StartCoroutine(Reload());
             return;
         }
-        if(Input.GetMouseButtonDown(0) && Time.time > nextTimeToFire ) {
+        if(Input.GetMouseButtonDown(0) && Time.time > nextTimeToFire && maxAmo > 0 ) {
  
                 nextTimeToFire = Time.time + 1f / fireRate;
 
                 weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
-
                 shoot();
         }        
     }
 
     IEnumerator Reload(){
-        isReloading = true;
-        Debug.Log("Reloading");
-        animator.SetBool("Reloading", true);
-        yield return new WaitForSeconds(reloadTime - .25f);
-        animator.SetBool("Reloading", false);
-        yield return new WaitForSeconds(.25f);
+        maxAmo -= 4;
+        if(maxAmo > 0){
+            isReloading = true;
+            Debug.Log("Reloading");
+            animator.SetBool("Reloading", true);
+            yield return new WaitForSeconds(reloadTime - .25f);
+            animator.SetBool("Reloading", false);
+            yield return new WaitForSeconds(.25f);
 
-
-        currentAmo = maxAmo;
-        isReloading = false;
-
+            currentAmo = maxAmmoMagazine;
+            isReloading = false;
+        }
+       
     }
     
     /*

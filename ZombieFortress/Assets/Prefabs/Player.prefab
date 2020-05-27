@@ -719,7 +719,8 @@ MonoBehaviour:
   fpsCam: {fileID: 8124892658856508180}
   muzzleFlash: {fileID: 198023787417360052}
   impactForce: 100
-  maxAmo: 4
+  maxAmmoMagazine: 4
+  maxAmo: 16
   reloadTime: 4
   animator: {fileID: 1257362646}
 --- !u!114 &1933065614752091663
