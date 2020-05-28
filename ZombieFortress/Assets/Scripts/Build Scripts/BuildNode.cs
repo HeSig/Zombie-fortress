@@ -56,8 +56,8 @@ public class BuildNode : MonoBehaviour {
 
     }
 
-    void OnMouseEnter() { rend.material.color = hoverColor; }
+   // void OnMouseEnter() { rend.material.color = hoverColor; }
 
-    void OnMouseExit() { rend.material.color = startColor; }
+   // void OnMouseExit() { rend.material.color = startColor; }
 
 }
