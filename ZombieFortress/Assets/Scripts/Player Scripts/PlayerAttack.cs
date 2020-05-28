@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerAttack : MonoBehaviour {
 
     private WeaponManager weapon_Manager;
@@ -21,14 +21,19 @@ public class PlayerAttack : MonoBehaviour {
     public ParticleSystem muzzleFlash;
     public float impactForce = 30f;
     public int maxAmmoMagazine = 4;
-    public int maxAmo = 12;
-    private int currentAmo;
+    public int currentAmo;
     public float reloadTime = 3f;
     private bool isReloading = false;
-    public Animator animator;
+    public Animator animator;   
+    public GameObject gameCamera;
+    TextMeshProUGUI ammo; 
 
     void Start(){
         currentAmo = maxAmmoMagazine;
+        gameCamera = GameObject.FindGameObjectsWithTag("UI")[0];
+        ammo = gameCamera.gameObject.transform.Find("Ammo").GetComponent<TMPro.TextMeshProUGUI>();
+        ammo.text = "Ammo " + maxAmmoMagazine + " / ∞";
+
     }
 
     void Awake() {
@@ -52,7 +57,7 @@ public class PlayerAttack : MonoBehaviour {
             StartCoroutine(Reload());
             return;
         }
-        if(Input.GetMouseButtonDown(0) && Time.time > nextTimeToFire && maxAmo > 0 ) {
+        if(Input.GetMouseButtonDown(0) && Time.time > nextTimeToFire ) {
  
                 nextTimeToFire = Time.time + 1f / fireRate;
 
@@ -62,8 +67,6 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     IEnumerator Reload(){
-        maxAmo -= 4;
-        if(maxAmo > 0){
             isReloading = true;
             Debug.Log("Reloading");
             animator.SetBool("Reloading", true);
@@ -72,9 +75,9 @@ public class PlayerAttack : MonoBehaviour {
             yield return new WaitForSeconds(.25f);
 
             currentAmo = maxAmmoMagazine;
+            ammo.text = "Ammo " + currentAmo + " / ∞";
             isReloading = false;
-        }
-       
+    
     }
     
     /*
@@ -93,6 +96,7 @@ public class PlayerAttack : MonoBehaviour {
     void shoot(){
         muzzleFlash.Play();
         currentAmo--;
+        ammo.text = "Ammo " + currentAmo + " / ∞";
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)){
             Debug.Log(hit.transform.name);
@@ -103,8 +107,7 @@ public class PlayerAttack : MonoBehaviour {
         }
     }
 
-    void fireBullet(int damage)
-    {
+    void fireBullet(int damage) {
         shotgun = GameObject.FindGameObjectWithTag("Shotgun");
         float shotgunY = shotgun.transform.position.y;
         float shotgunX = shotgun.transform.position.x;
@@ -114,5 +117,4 @@ public class PlayerAttack : MonoBehaviour {
         bullet.GetComponent<TowerBulletScript>().damage = damage;
         //rotationScript.fire();
     }
-
 }
