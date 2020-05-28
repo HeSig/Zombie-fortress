@@ -9,8 +9,7 @@ public class WeaponHandler : MonoBehaviour
 
     //[SerializeField] private GameObject muzzleFlash;
 
-    [SerializeField]
-    private AudioSource shootSound, reload_Sound;
+    [SerializeField] private AudioSource shootSound, pump_Sound;
 
     void Awake() {
         anim = GetComponent<Animator>();
@@ -33,9 +32,10 @@ public class WeaponHandler : MonoBehaviour
     void Play_ShootSound() {
         shootSound.Play();
     }
-
-    void Play_ReloadSound() {
-        reload_Sound.Play();
+    
+    void Play_PumpSound() {
+        pump_Sound.Play();
     }
+    
 
 }

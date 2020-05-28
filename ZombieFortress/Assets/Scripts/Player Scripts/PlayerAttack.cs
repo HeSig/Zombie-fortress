@@ -9,31 +9,28 @@ public class PlayerAttack : MonoBehaviour {
     private GameObject crosshair;
     public GameObject bulletObject;
     public GameObject shotgun;
-
     private float nextTimeToFire;
-
     public float fireRate = 1f;
-
     public float damage = 20f;
-
     public float range = 20f;  
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public float impactForce = 30f;
     public int maxAmmoMagazine = 4;
-    public int currentAmo;
+    private int currentAmo;
     public float reloadTime = 3f;
     private bool isReloading = false;
     public Animator animator;   
     public GameObject gameCamera;
-    TextMeshProUGUI ammo; 
+    private TextMeshProUGUI ammo; 
+    private AudioSource reloadSound;
 
     void Start(){
+        reloadSound  = GetComponent<AudioSource>();
         currentAmo = maxAmmoMagazine;
         gameCamera = GameObject.FindGameObjectsWithTag("UI")[0];
         ammo = gameCamera.gameObject.transform.Find("Ammo").GetComponent<TMPro.TextMeshProUGUI>();
         ammo.text = "Ammo " + maxAmmoMagazine + " / ∞";
-
     }
 
     void Awake() {
@@ -49,7 +46,6 @@ public class PlayerAttack : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
         if(isReloading)
             return;
 
@@ -68,30 +64,17 @@ public class PlayerAttack : MonoBehaviour {
 
     IEnumerator Reload(){
             isReloading = true;
-            Debug.Log("Reloading");
+            //Debug.Log("Reloading");
             animator.SetBool("Reloading", true);
             yield return new WaitForSeconds(reloadTime - .25f);
+            reloadSound.Play();
             animator.SetBool("Reloading", false);
             yield return new WaitForSeconds(.25f);
 
             currentAmo = maxAmmoMagazine;
             ammo.text = "Ammo " + currentAmo + " / ∞";
             isReloading = false;
-    
     }
-    
-    /*
-    void WeaponShoot() {
-        if(Input.GetMouseButtonDown(0) && Time.time > nextTimeToFire ) {
- 
-                nextTimeToFire = Time.time + 1f / fireRate;
-
-                weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
-
-                shoot();
-            }
-    }
-    */
 
     void shoot(){
         muzzleFlash.Play();
