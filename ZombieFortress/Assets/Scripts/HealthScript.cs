@@ -104,19 +104,11 @@ public class HealthScript : MonoBehaviour
 
 
         }
-        if (tag == Tags.PLAYER_TAG)
-        {
-            Invoke("RestartGame", 3f);
-        }
         else
         {
             Invoke("TurnOffGameObject", 3f);
         }
 
-    }
-    void RestartGame()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
     void TurnOffGameObject()
     {

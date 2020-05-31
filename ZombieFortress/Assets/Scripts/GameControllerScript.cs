@@ -75,7 +75,9 @@ public class GameControllerScript : MonoBehaviour
 
         scoreText.text = "Score " + score;
         zombiesLeft.text = "Zombies Left " + numberOfZombiesLeft.ToString();
-        gateHealth.text = "Gate Health " + gate.GetComponent<GateScript>().health.ToString();
+        int endHealth = gate.GetComponent<GateScript>().health;
+        if (endHealth < 0) endHealth = 0;
+        gateHealth.text = "Gate Health " + endHealth;
         moneyText.text = "Money " + Money;
 
         if (numberOfZombiesLeft == 0 && levelRunning)
@@ -86,9 +88,9 @@ public class GameControllerScript : MonoBehaviour
         }
 
         //If the gate is destroyed the player loses
-        if (gate.GetComponent<GateScript>().destroyed)
+        if (gate.GetComponent<GateScript>().destroyed || player.GetComponent<HealthScript>().health < 0)
         {
-            loseText.text = "YOU LOSE, press space to restart";
+            loseText.text = "GAME OVER, press space to restart";
 
             if (SpacePress())
             {
