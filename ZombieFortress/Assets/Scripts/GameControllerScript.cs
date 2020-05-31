@@ -88,8 +88,8 @@ public class GameControllerScript : MonoBehaviour
         //If the gate is destroyed the player loses
         if (gate.GetComponent<GateScript>().destroyed)
         {
-            loseText.text = "YOU LOSE, press space to restart";
-
+            loseText.text = "GAME OVER, press space to restart";
+            
             if (SpacePress())
             {
                 SceneManager.LoadScene(1);
