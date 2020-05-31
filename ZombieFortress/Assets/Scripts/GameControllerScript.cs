@@ -91,7 +91,7 @@ public class GameControllerScript : MonoBehaviour
         if (gate.GetComponent<GateScript>().destroyed || player.GetComponent<HealthScript>().health < 0)
         {
             loseText.text = "GAME OVER, press space to restart";
-
+            
             if (SpacePress())
             {
                 SceneManager.LoadScene(1);
